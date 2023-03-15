@@ -1,0 +1,109 @@
+﻿@model SNKRS.ViewModels.HomeViewModel
+
+@{
+    ViewBag.Title = "Home";
+}
+
+<section class="highlight-phone">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="intro">
+                    <h4>Coffee Shop</h4>
+                    <h2>Tận Hưởng Hương Vị<br></h2>
+                    <p>Từ tình yêu với Việt Nam và niềm đam mê cà phê, năm 2022, thương hiệu H2KT ra đời với khát vọng nâng tầm di sản cà phê lâu đời của Việt Nam và lan rộng tinh thần tự hào, kết nối hài hoà giữa truyền thống với hiện đại.Qua một chặng đường dài, chúng tôi đã không ngừng mang đến những sản phẩm cà phê thơm ngon, sánh đượm trong không gian thoải mái và lịch sự. Những ly cà phê của chúng tôi không chỉ đơn thuần là thức uống quen thuộc mà còn mang trên mình một sứ mệnh văn hóa phản ánh một phần nếp sống hiện đại của người Việt Nam.</p><a class="btn btn-primary" role="button" href="#">Xem Ngay</a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <img style="height:450px" class="w-100" src="~/Content/Images/service-3.jpg">
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container">
+        <h1 class="py-3">Giảm Giá</h1>
+        <div class="reflow-product-list ref-cards">
+            <div class="ref-products">
+                @foreach (var item in Model.OnSale)
+                {
+                    <a class="ref-product" href="@Url.Action("Details", "Product", new { id = item.Id })">
+                        <img class="ref-image" src="@item.Image" loading="lazy">
+                        <div class="ref-product-data">
+                            <div class="ref-product-info">
+                                <h5 class="ref-name">@item.Name</h5>
+                            </div>
+                            @if (item.SalePrice > 0)
+                            {
+                                <p class="ref-price"><span class="text-decoration-line-through text-muted">@String.Format("{0:#,##0}", item.Price)</span> - @String.Format("{0:#,##0}", item.SalePrice)<u>đ</u></p>
+                            }
+                            else
+                            {
+                                <p class="ref-price">@String.Format("{0:#,##0}", item.Price)<u>đ</u></p>
+                            }
+                        </div>
+                    </a>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <h1 class="py-3">Sắp Có</h1>
+        <div class="reflow-product-list ref-cards">
+            <div class="ref-products">
+                @foreach (var item in Model.Upcoming)
+                {
+                    <a class="ref-product" href="@Url.Action("Details", "Product", new { id = item.Id })">
+                        <img class="ref-image" src="@item.Image" loading="lazy">
+                        <div class="ref-product-data">
+                            <div class="ref-product-info">
+                                <h5 class="ref-name">@item.Name</h5>
+                            </div>
+                            @if (item.SalePrice > 0)
+                            {
+                                <p class="ref-price"><span class="text-decoration-line-through text-muted">@String.Format("{0:#,##0}", item.Price)</span> - @String.Format("{0:#,##0}", item.SalePrice)<u>đ</u></p>
+                            }
+                            else
+                            {
+                                <p class="ref-price">@String.Format("{0:#,##0}", item.Price)<u>đ</u></p>
+                            }
+                        </div>
+                    </a>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <h1 class="py-3">Bán Chạy</h1>
+        <div class="reflow-product-list ref-cards">
+            <div class="ref-products">
+                @foreach (var item in Model.Best_selling)
+                {
+                    <a class="ref-product" href="@Url.Action("Details", "Product", new { id = item.Id })">
+                        <img class="ref-image" src="@item.Image" loading="lazy">
+                        <div class="ref-product-data">
+                            <div class="ref-product-info">
+                                <h5 class="ref-name">@item.Name</h5>
+                            </div>
+                            @if (item.SalePrice > 0)
+                            {
+                                <p class="ref-price"><span class="text-decoration-line-through text-muted">@String.Format("{0:#,##0}", item.Price)</span> - @String.Format("{0:#,##0}", item.SalePrice)<u>đ</u></p>
+                            }
+                            else
+                            {
+                                <p class="ref-price">@String.Format("{0:#,##0}", item.Price)<u>đ</u></p>
+                            }
+                        </div>
+                    </a>
+                }
+            </div>
+        </div>
+    </div>
+    <a style="float:right" href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
+</section>

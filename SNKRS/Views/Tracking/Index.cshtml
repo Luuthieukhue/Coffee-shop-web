@@ -1,0 +1,44 @@
+﻿@model SNKRS.Models.Order
+@{
+    ViewBag.Title = "Tracking";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container my-5 min-vh-100">
+    <div class="row justify-content-lg-center">
+        <div class="col-lg-8">
+            <h2 class="text-center py-3">Tra cứu đơn hàng</h2>
+            @using (Html.BeginForm("Index", "Tracking"))
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-group input-group-lg mb-3">
+                    <input name="Id" type="text" class="form-control" placeholder="Mã đơn hàng" />
+                </div>
+                <button type="submit" hidden>Tra cứu</button>
+            }
+            @if (ViewBag.Search == true)
+            {
+                if (Model != null)
+                {
+                    <div class="card">
+                        <div class="card-body">
+                            <p><b>Mã đơn hàng: </b>#@Model.Id</p>
+                            <p><b>Khách hàng: </b>@Model.Name</p>
+                            <p><b>Số điện thoại: </b>@Model.Phone</p>
+                            <p><b>Địa chỉ: </b>@Model.Address</p>
+                            <p><b>Ngày đặt: </b>@Model.Created_At</p>
+                            <p><b>Số lượng: </b>@String.Format("{0:#,##0}", Model.Amount)</p>
+                            <p><b>Tình trạng đơn hàng: </b><span class="badge bg-success">@Model.OrderStatus.Name</span></p>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div>Không có đơn hàng phù hợp</div>
+                }
+            }
+
+        </div>
+    </div>
+
+</div>

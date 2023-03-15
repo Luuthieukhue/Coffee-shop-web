@@ -1,0 +1,161 @@
+﻿@using SNKRS.Models
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - H2KT</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="https://cdn.reflowhq.com/v1/toolkit.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    @RenderSection("styles", required: false)
+    <link href="~/Css/style.css" rel="stylesheet" type="text/css" media="screen" runat="server" />
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <div class="container">
+            <a class="navbar-brand" href="@Url.Action("Index", "Home")">H2KT</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="@Url.Action("Index", "Home")">Trang chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Index", "Shop")">Cửa hàng</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Index", "Tracking")">Tra cứu đơn hàng</a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Index", "Cart")"><i class="fa-solid fa-cart-shopping"></i> Giỏ hàng <span id="cart-amount" class="badge bg-secondary"></span></a>
+                        </li>
+                        @Html.Partial("_LoginPartial")
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <main>
+        @RenderBody()
+    </main>
+    <div id="Footer">
+        <!-- Footer Start -->
+        <div class="container-fluid footer text-white mt-5 pt-5 px-0 position-relative overlay-top">
+            <div class="row mx-0 pt-5 px-sm-3 px-lg-5 mt-4">
+                <div class="col-lg-3 col-md-6 mb-5">
+                    <h4 class="text-white text-uppercase mb-4" style="letter-spacing: 3px;">Liên lạc</h4>
+                    <p><i class="fa fa-map-marker-alt mr-2"></i>Lô E1,Phân khu đào tạo E1, Khu Công Nghệ cao TP.HCM, Phường Hiệp Phú, Quận 9, TP.HCM</p>
+                    <p><i class="fa fa-phone-alt mr-2"></i>0909090909</p>
+                    <p class="m-0"><i class="fa fa-envelope mr-2"></i>h2kt19dthe3@gmail.com</p>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-5">
+                    <h4 class="text-white text-uppercase mb-4" style="letter-spacing: 3px;">Theo dõi chúng tôi</h4>
+                    <p>Hãy theo dõi cái trang cộng động của chúng tôi để xem các chương trình khuyến mãi và thông tin mới nhất!</p>
+                    <div class="d-flex justify-content-start">
+                        <a class="btn btn-lg btn-outline-light btn-lg-square mr-2" href="https://twitter.com/ltkvthd"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-lg btn-outline-light btn-lg-square mr-2" href="https://www.facebook.com/luuthieukhue/"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-lg btn-outline-light btn-lg-square" href="https://www.instagram.com/luuthieukhue/"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-5">
+                    <h4 class="text-white text-uppercase mb-4" style="letter-spacing: 3px;">Giờ hoạt động</h4>
+                    <div>
+                        <h6 class="text-white text-uppercase">Thứ Hai - Chủ Nhật</h6>
+                        <p>8.00 AM - 10.00 PM</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-5">
+                    <h4 class="text-white text-uppercase mb-4" style="letter-spacing: 3px;">Cơ sở hoạt động</h4>
+                    <div>
+                        <h6 class="text-white text-uppercase">Cơ sở 1:</h6>
+                        <p>Hutech Khu A,B</p>
+                        <h6 class="text-white text-uppercase">Cơ sở 2:</h6>
+                        <p>Hutech Khu E</p>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid text-center text-white border-top mt-4 py-4 px-sm-3 px-md-5" style="border-color: rgba(256, 256, 256, .1) !important;">
+                <p class="mb-2 text-white">Copyright &copy; <a class="font-weight-bold" href="https://localhost:44361/">H2KT</a></p>
+                <p class="m-0 text-white">Designed by <a>H2KT</a></p>
+            </div>
+        </div>
+    </div>
+
+ @*   <footer class="footer-dark">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-md-3 item">
+                    <h3>Dịch vụ</h3>
+                    <ul>
+                        <li><a href="#">Web design</a></li>
+                        <li><a href="#">Development</a></li>
+                        <li><a href="#">Hosting</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-6 col-md-3 item">
+                    <h3>About</h3>
+                    <ul>
+                        <li><a href="#">Company</a></li>
+                        <li><a href="#">Team</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-6 item text">
+                    <h3>SNKRS</h3>
+                    <p>Praesent sed lobortis mi. Suspendisse vel placerat ligula. Vivamus ac sem lacus. Ut vehicula rhoncus elementum. Etiam quis tristique lectus. Aliquam in arcu eget velit pulvinar dictum vel in justo.</p>
+                </div>
+                <div class="col item social"><a href="#"><i class="fa-brands fa-facebook-f"></i></a><a href="#"><i class="fa-brands fa-twitter"></i></a><a href="#"><i class="fa-brands fa-snapchat"></i></a><a href="#"><i class="fa-brands fa-instagram"></i></a></div>
+            </div>
+            <p class="copyright">SNKRS © 2022</p>
+        </div>
+    </footer>*@
+    <!-- Messenger Plugin chat Code -->
+    <div id="fb-root"></div>
+
+    <!-- Your Plugin chat code -->
+    <div id="fb-customer-chat" class="fb-customerchat">
+    </div>
+
+    <script>
+        var chatbox = document.getElementById('fb-customer-chat');
+        chatbox.setAttribute("page_id", "105449742133587");
+        chatbox.setAttribute("attribution", "biz_inbox");
+    </script>
+
+    <!-- Your SDK code -->
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                xfbml: true,
+                version: 'v13.0'
+            });
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script>
+        $.ajax({
+            url: "@Url.Action("GetCartAmount", "Cart")",
+            success: function (res) {
+                $("#cart-amount").text(res);
+            }
+        })
+    </script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>
